@@ -1,6 +1,10 @@
 package org.java.app;
 
+import java.time.LocalDate;
+
+import org.java.app.pizzeria.pojo.Offerta;
 import org.java.app.pizzeria.pojo.Pizza;
+import org.java.app.pizzeria.serv.OffertaServ;
 import org.java.app.pizzeria.serv.PizzaServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +16,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 
 	@Autowired
 	private PizzaServ pizzaServ;
+	
+	@Autowired
+	private OffertaServ offertaServ;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringLaMiaPizzeriaCrudApplication.class, args);
@@ -27,6 +34,11 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		pizzaServ.save(pizza1);
 		pizzaServ.save(pizza2);
 		pizzaServ.save(pizza3);
+		
+		
+		Offerta offerta1 = new Offerta("-2%", LocalDate.now(), LocalDate.parse("2023-01-01"), pizza1 );
+		
+		offertaServ.save(offerta1);
 	}
 
 }

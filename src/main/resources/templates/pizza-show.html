@@ -9,6 +9,12 @@
 	<h1>Pizza: [[*{name}]]</h1>
 	<h2>Prezzo: [[*{price}]] euro</h2>
 	<h5>[[*{description}]]</h5>
+	<h1>Offerte Speciali:</h1> <a th:href="@{/offerte/create/(pizzaId=${pizza.id})}">Crea nuova offerta</a>
+	<ul>
+		<li th:each="offerta : ${pizza.offerta}" th:object="${offerta}">
+			<h4>Sconto: [[*{titolo}]] -  Data Inizio: [[*{dataInizio}]] - Data Fine: [[*{dataFine}]] - <a th:href="@{/offerte/update/{pizzaId}(pizzaId=${pizza.id})}">Modifica</a></h4>
+		</li>
+	</ul>
 	<img th:src="*{photo}">
 </body>
 </html>

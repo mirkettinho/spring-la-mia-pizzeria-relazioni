@@ -1,5 +1,7 @@
 package org.java.app.pizzeria.pojo;
 
+import java.util.List;
+
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.Column;
@@ -7,15 +9,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
 @Entity
+@Table(name = "pizza")
 public class Pizza {
 	
+	///PIZZA
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	
 	@Column(nullable = false, unique = true)
 	@Length(min = 3, max = 20)
@@ -31,6 +37,13 @@ public class Pizza {
 	@Max(100)
 	private int price;
 	
+	@OneToMany(mappedBy = "pizza")
+	private List<Offerta> offerta;
+	
+	
+	
+	///PIZZA
+	
 	public Pizza() {}
 	
 	public Pizza(String name, String description, String photo, int price) {
@@ -40,12 +53,14 @@ public class Pizza {
 		setPhoto(photo);
 		setPrice(price);
 	}
-
-	public int getId() {
+	
+	
+	/// get and set
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -79,6 +94,16 @@ public class Pizza {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	
+	public List<Offerta> getOfferta() {
+		
+		return offerta;
+	}
+	
+	public void setOfferta(List<Offerta> offerta) {
+		
+		this.offerta = offerta;
 	}
 	
 	
