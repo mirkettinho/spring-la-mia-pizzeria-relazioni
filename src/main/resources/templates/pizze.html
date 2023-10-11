@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Pizze</title>
+</head>
+<body>
+
+	<h1>Pizze</h1>
+	<a th:href="@{/pizza/create}">Crea una nuova pizza</a>
+	<h5 th:if="${pizze.size() < 1}">non ci sono pizze!!!</h5>
+	<div th:if="${pizze.size() > 0}">
+	<!-- FORM !-->		
+		<form>
+			<label for="search">Search</label>
+			<input type="text" name="searchInput" th:value="${searchInput}">
+			<input type="submit" value="Submit">
+		</form>
+		<ul>
+			<li th:each="pizza : ${pizze}" th:object="${pizza}">
+				
+				<a th:href="@{pizza-details/{id}(id=*{id})}">[[*{name}]]</a>
+				<a th:href="@{/pizza/update/{id}(id=*{id})}" class="btn btn-warning">Modifica</a>
+				
+				<form th:action="@{/pizza/delete/{id}(id=*{id})}" method="POST" style="display: inline;" >		
+					<input type="submit" value="Elimina">
+				</form>
+
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

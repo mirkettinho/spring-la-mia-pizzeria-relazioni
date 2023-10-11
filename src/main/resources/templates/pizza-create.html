@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Pizza Create</title>
+</head>
+<body>
+	
+	<h1>
+		<span th:if="${pizza.id < 1}">Crea pizza</span>
+		
+		<span th:if="${pizza.id > 0}">Modifica pizza</span>
+	</h1>
+	
+	<form th:object="${pizza}"
+			method="POST">
+		
+		<label for="name">Nome</label>
+		<input type="text" name="name" th:value="*{name}">
+		
+		<label for="description">Descrizione</label>
+		<input type="text" name="description" th:value="*{description}">
+		
+		<label for="photo">Immagine</label>
+		<input type="text" name="photo" th:value="*{photo}">
+		
+		<label for="price">Price</label>
+		<input type="text" name="price" th:value="*{price}">
+		
+		<input type="submit" th:value="${pizza.id > 0 ? 'Modifica' : 'Crea'}">
+	</form>
+</body>
+</html>
