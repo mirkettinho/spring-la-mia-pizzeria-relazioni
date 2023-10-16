@@ -2,6 +2,7 @@ package org.java.app.pizzeria.pojo;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,14 +12,15 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "offerta")
-public class Offerta {
+@Table(name = "offerte")
+public class Offerte {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	private Integer id;
 	
+	@Column(nullable = false)
 	private String titolo;
 	
 	private LocalDate dataInizio;
@@ -31,9 +33,9 @@ public class Offerta {
 	
 	///OFFERTA
 	
-	public Offerta() {}
+	public Offerte() {}
 		
-	public Offerta(String titolo, LocalDate dataInizio, LocalDate dataFine, Pizza pizza) {
+	public Offerte(String titolo, LocalDate dataInizio, LocalDate dataFine, Pizza pizza) {
 			
 		setTitolo(titolo);
 		setDataInizio(dataInizio);

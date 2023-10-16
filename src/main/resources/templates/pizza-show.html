@@ -34,15 +34,21 @@
 	<h2>Prezzo: [[*{price}]] euro</h2>
 	<h5>[[*{description}]]</h5>
 	
-	
+	<!-- OFFERTE -->
 	<div class="d-flex align-items-baseline">
 		<h1>Offerte Speciali:</h1> 
-		<a th:href="@{/offerte/create/(pizzaId=${pizza.id})}" class="btn btn-primary ms-3">Crea nuova offerta</a>
+		<a th:href="@{/offerte/create(pizzaId = ${pizza.id})}" class="btn btn-primary ms-3">Crea nuova offerta</a>
 	</div>
 	
 	<ul>
 		<li th:each="offerta : ${pizza.offerta}" th:object="${offerta}" style="font-size: 1px;">
-			<h4 style="font-size: 18px;">Sconto: [[*{titolo}]] -  Data Inizio: [[*{dataInizio}]] - Data Fine: [[*{dataFine}]] - <a th:href="@{/offerte/update/{pizzaId}(pizzaId=${pizza.id})}" class="btn btn-warning">Modifica</a></h4>
+			<h4 style="font-size: 18px;">Sconto: [[*{titolo}]] -  Data Inizio: [[*{dataInizio}]] - Data Fine: [[*{dataFine}]] - <a th:href="@{/offerte/edit/{offertaId}(offertaId=${pizza.id})}" class="btn btn-warning">Modifica</a></h4>
+			<form
+                      th:action="@{/offerte/delete/{offertaId}(offertaId=${offerta.id})}"
+                      method="POST"
+                  >
+                  <button type="submit" class="btn btn-danger">Elimina
+            </form>
 		</li>
 	</ul>
 	<img th:src="*{photo}" width="500">

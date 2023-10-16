@@ -1,8 +1,10 @@
 package org.java.app;
 
+
+
 import java.time.LocalDate;
 
-import org.java.app.pizzeria.pojo.Offerta;
+import org.java.app.pizzeria.pojo.Offerte;
 import org.java.app.pizzeria.pojo.Pizza;
 import org.java.app.pizzeria.serv.OffertaServ;
 import org.java.app.pizzeria.serv.PizzaServ;
@@ -36,9 +38,19 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 		pizzaServ.save(pizza3);
 		
 		
-		Offerta offerta1 = new Offerta("-2%", LocalDate.now(), LocalDate.parse("2023-01-01"), pizza1 );
+		Offerte offerta1 = new Offerte("-1%", LocalDate.now(), LocalDate.parse("2023-01-01"), pizza1 );
+		Offerte offerta2 = new Offerte("-2%", LocalDate.now(), LocalDate.parse("2023-01-01"), pizza1 );
+		Offerte offerta3 = new Offerte("-3%", LocalDate.now(), LocalDate.parse("2023-01-01"), pizza2 );
+		Offerte offerta4 = new Offerte("-4%", LocalDate.now(), LocalDate.parse("2023-01-01"), pizza2 );
+		Offerte offerta5 = new Offerte("-5%", LocalDate.now(), LocalDate.parse("2023-01-01"), pizza3 );
+		Offerte offerta6 = new Offerte("-5%", LocalDate.now(), LocalDate.parse("2023-01-01"), pizza3 );
 		
-		offertaServ.save(offerta1);
+		offertaServ.save(offerta1 );
+		offertaServ.save(offerta2 );
+		offertaServ.save(offerta3 );
+		offertaServ.save(offerta4 );
+		offertaServ.save(offerta5 );
+		offertaServ.save(offerta6 );
 	}
 
 }

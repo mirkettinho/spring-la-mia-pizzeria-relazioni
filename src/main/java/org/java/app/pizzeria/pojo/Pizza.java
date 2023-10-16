@@ -15,7 +15,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
 @Entity
-@Table(name = "pizza")
+@Table(name = "pizze")
 public class Pizza {
 	
 	///PIZZA
@@ -38,7 +38,7 @@ public class Pizza {
 	private int price;
 	
 	@OneToMany(mappedBy = "pizza")
-	private List<Offerta> offerta;
+	private List<Offerte> offerte;
 	
 	
 	
@@ -96,14 +96,14 @@ public class Pizza {
 		this.price = price;
 	}
 	
-	public List<Offerta> getOfferta() {
+	public List<Offerte> getOfferta() {
 		
-		return offerta;
+		return offerte;
 	}
 	
-	public void setOfferta(List<Offerta> offerta) {
+	public void setOfferta(List<Offerte> offerte) {
 		
-		this.offerta = offerta;
+		this.offerte = offerte;
 	}
 	
 	

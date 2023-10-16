@@ -1,9 +1,11 @@
 package org.java.app.pizzeria.serv;
 
+
+
 import java.util.List;
 
-import org.java.app.pizzeria.pojo.Offerta;
-import org.java.app.pizzeria.repo.OffertaRepo;
+import org.java.app.pizzeria.pojo.Offerte;
+import org.java.app.pizzeria.repo.OfferteRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,20 +13,20 @@ import org.springframework.stereotype.Service;
 public class OffertaServ {
 	
 	@Autowired
-	private OffertaRepo offertaRepo;
+	private OfferteRepo offerteRepo;
 	
-	public void save(Offerta offerta) {
+	public void save(Offerte offerta) {
 		
-		offertaRepo.save(offerta);
+		offerteRepo.save(offerta);
 	}
 	
-	public List<Offerta> findAll() {
+	public List<Offerte> findAll() {
 		
-		return offertaRepo.findAll();
+		return offerteRepo.findAll();
 	}
 	
-	public Offerta findById(Integer id) {
+	public Offerte findById(Integer id) {
 		
-		return offertaRepo.findById(id).get();
+		return offerteRepo.findById(id).get();
 	}
 }

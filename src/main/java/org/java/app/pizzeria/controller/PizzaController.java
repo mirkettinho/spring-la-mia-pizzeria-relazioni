@@ -26,7 +26,6 @@ public class PizzaController {
 	@GetMapping("/")
 	public String getIndex(@RequestParam(required = false) String searchInput,	Model model) {
 		
-///		List<Pizza> pizze = pizzaServ.findAll();
 		
 		List<Pizza> pizze = searchInput == null ? pizzaServ.findAll() : pizzaServ.findByName(searchInput);
 		model.addAttribute("pizze", pizze);
@@ -35,6 +34,7 @@ public class PizzaController {
 		return "pizze";
 	}
 	
+	/// VISTA DETTAGLIO PIZZA
 	@GetMapping("/pizza-details/{id}")
 	public String getShow(@PathVariable int id, Model model) {
 		
@@ -44,6 +44,7 @@ public class PizzaController {
 		return "pizza-show";
 	}
 	
+	/// VISTA FORM CREAZIONE PIZZA
 	@GetMapping("/pizza/create")
 	public String getCreate(Model model) {
 		
@@ -52,6 +53,7 @@ public class PizzaController {
 		return "pizza-create";
 	}
 	
+	/// AGGIUNTA NUOVA PIZZA USANDO POST
 	@PostMapping("/pizza/create")
 	public String storeNewPizza(
 		@Valid @ModelAttribute Pizza pizza,
@@ -66,6 +68,7 @@ public class PizzaController {
 		return "redirect:/";
 	}
 	
+	/// CONTROLLER UPDATE PIZZA
 	@GetMapping("pizza/update/{id}")
 	public String getUpdate(@PathVariable int id, Model model) {
 		
@@ -75,6 +78,7 @@ public class PizzaController {
 		return "pizza-create";
 	}
 	
+	/// MODIFICA DATI PIZZA RICEVUTI E AGGIORNATI
 	@PostMapping("pizza/update/{id}")
 	public String updatePizza(@Valid @ModelAttribute Pizza pizza,
 			BindingResult bindingResult,
@@ -86,6 +90,7 @@ public class PizzaController {
 			return savePizza(pizza, bindingResult, model);
 	}
 	
+	/// ELIMINAZIONE PIZZA
 	@PostMapping("pizza/delete/{id}")
 	public String deletePizza(@PathVariable int id) {
 		
